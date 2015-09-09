@@ -13,12 +13,11 @@ rs._read = function () {
       a = b;
       b  = c;
 
-      rs.push('' + c + '\n');
+      rs.push('' + c);
     }, 100);
   } else {
     this.push(null);
   }
 }
 
-rs.pipe(process.stdout);
-process.stdout.on('error', process.exit);
+module.exports = rs;
