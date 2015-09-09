@@ -4,20 +4,17 @@ var a = 0;
 var b = 1;
 
 var rs = new stream.Readable();
+
 rs._read = function () {
-  if (b <= 200000) {
-    setTimeout(function () {
+  if (b < 144) {
+    var c = a + b;
+    a = b;
+    b = c;
 
-      var c = a + b;
-
-      a = b;
-      b  = c;
-
-      rs.push('' + c);
-    }, 100);
+    rs.push('' + c);
   } else {
-    this.push(null);
+    rs.push(null);
   }
-}
+};
 
 module.exports = rs;
