@@ -1,16 +1,8 @@
-var http = require('http');
+var express = require('express');
+var app = express();
 
-var server = http.createServer(function (request, response) {
-  response.write('<h1> Hello World </h1>');
-  response.end();
+app.get('/', function (req, res) {
+  res.send('Hello World!');
 });
 
-// server.listen(3000);
-
-var server2 = http.createServer();
-
-server2.on('request', function (req, res) {
-  fs.createReadStream('server.js').pipe(res);
-});
-
-server2.listen(3000);
+var server = app.listen(3000);
